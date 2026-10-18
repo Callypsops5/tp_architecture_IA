@@ -1,0 +1,40 @@
+services:
+  elasticsearch:
+    image: elasticsearch:9.3.2
+    environment:
+      - http.cors.enabled=true
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+
+  backend:
+    build: ./fastapi-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - ES_URL=http://elasticsearch:9200
+      - OLLAMA_URL=http://ollama:11434
+    depends_on:
+      - elasticsearch
+      - ollama
+
+  front:
+    build: ./react-front
+    container_name: react-front
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+      
+volumes:
+  ollama_data:

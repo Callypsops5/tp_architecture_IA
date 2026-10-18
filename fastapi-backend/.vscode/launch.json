@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "FastAPI",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": ["fastapi_backend.main:app", "--reload", "--port", "8000"],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}/src",
+        "ES_URL": "http://localhost:9200",
+        "OLLAMA_URL": "http://localhost:11434"
+      },
+      "jinja": true
+    }
+  ]
+}
