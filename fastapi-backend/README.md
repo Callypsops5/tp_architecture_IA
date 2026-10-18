@@ -82,4 +82,4 @@ iasearch/
 
 ## Auteur
 
-NGELE BISSENGUE Jeannette, ONYANGO Charlotte, TROUILLET Steve — Master Data et IA, EPSI Montpellier.
+NGELE BISSENGUE Jeannette, ONYANGO Charlotte, TROUILLET Steve John — Master Data et IA, EPSI Montpellier.
